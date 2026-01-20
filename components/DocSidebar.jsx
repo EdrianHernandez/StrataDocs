@@ -20,7 +20,7 @@ const DocSidebar = ({
 
       {/* Sidebar Container */}
       <aside 
-        className={`fixed top-0 left-0 z-50 h-full w-72 bg-slate-50/95 dark:bg-slate-950/95 backdrop-blur-xl border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-[calc(100vh-4rem)] lg:bg-transparent lg:border-r-0 lg:w-64 lg:block shrink-0 ${
+        className={`fixed top-0 left-0 z-50 h-full w-72 bg-slate-50/95 dark:bg-slate-950/95 backdrop-blur-xl border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:sticky lg:top-16 lg:z-30 lg:h-[calc(100vh-4rem)] lg:bg-transparent lg:border-r-0 lg:w-64 lg:block shrink-0 ${
           isOpenMobile ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
