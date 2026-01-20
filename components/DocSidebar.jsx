@@ -1,16 +1,7 @@
 import React from 'react';
-import { NavItem } from '../types';
 import { ChevronRight, Box } from 'lucide-react';
 
-interface DocSidebarProps {
-  navItems: NavItem[];
-  currentPath: string;
-  onNavigate: (path: string) => void;
-  isOpenMobile: boolean;
-  closeMobile: () => void;
-}
-
-const DocSidebar: React.FC<DocSidebarProps> = ({ 
+const DocSidebar = ({ 
   navItems, 
   currentPath, 
   onNavigate,
