@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { Check, Copy, Terminal } from 'lucide-react';
 
-interface CodeBlockProps {
-  code: string;
-  language?: string;
-  filename?: string;
-  showLineNumbers?: boolean;
-}
-
-const CodeBlock: React.FC<CodeBlockProps> = ({ 
+const CodeBlock = ({ 
   code, 
   language = 'bash', 
   filename,
@@ -22,8 +15,10 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Basic syntax highlighting simulation (splitting by keywords for demo visuals)
-  const highlightCode = (input: string) => {
+  /**
+   * Basic syntax highlighting simulation (splitting by keywords for demo visuals)
+   */
+  const highlightCode = (input) => {
     return input.split('\n').map((line, i) => (
       <div key={i} className="table-row">
         {showLineNumbers && (
