@@ -1,14 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Search, X, FileText, Hash, ArrowRight } from 'lucide-react';
-import { SearchResult } from '../types';
 
-interface SearchOverlayProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onNavigate: (href: string) => void;
-}
-
-const MOCK_RESULTS: SearchResult[] = [
+const MOCK_RESULTS = [
   { id: '1', title: 'Installation', category: 'Getting Started', href: '#installation' },
   { id: '2', title: 'Authentication', category: 'API Reference', href: '#authentication' },
   { id: '3', title: 'API Keys', category: 'Core Concepts', href: '#api-keys' },
@@ -17,11 +10,11 @@ const MOCK_RESULTS: SearchResult[] = [
   { id: '6', title: 'SDK Support', category: 'Resources', href: '#sdks' },
 ];
 
-const SearchOverlay: React.FC<SearchOverlayProps> = ({ isOpen, onClose, onNavigate }) => {
+const SearchOverlay = ({ isOpen, onClose, onNavigate }) => {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>(MOCK_RESULTS);
+  const [results, setResults] = useState(MOCK_RESULTS);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -43,7 +36,7 @@ const SearchOverlay: React.FC<SearchOverlayProps> = ({ isOpen, onClose, onNaviga
   }, [query]);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       if (!isOpen) return;
 
       if (e.key === 'ArrowDown') {
