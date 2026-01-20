@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { TocItem } from '../types';
 
-interface TableOfContentsProps {
-  items: TocItem[];
-}
-
-const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
-  const [activeId, setActiveId] = useState<string>('');
+const TableOfContents = ({ items }) => {
+  const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
