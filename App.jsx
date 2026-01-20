@@ -4,11 +4,10 @@ import DocSidebar from './components/DocSidebar';
 import CodeBlock from './components/CodeBlock';
 import SearchOverlay from './components/SearchOverlay';
 import TableOfContents from './components/TableOfContents';
-import { NavItem, TocItem } from './types';
 
 // --- Data Definitions ---
 
-const NAV_ITEMS: NavItem[] = [
+const NAV_ITEMS = [
   {
     title: 'Getting Started',
     href: '/getting-started',
@@ -38,7 +37,7 @@ const NAV_ITEMS: NavItem[] = [
   }
 ];
 
-const TOC_ITEMS: TocItem[] = [
+const TOC_ITEMS = [
   { id: 'introduction', text: 'Introduction', level: 2 },
   { id: 'installation', text: 'Installation', level: 2 },
   { id: 'configuration', text: 'Configuration', level: 3 },
@@ -150,7 +149,7 @@ const ContentSection = () => (
 
 const client = new Strata(process.env.STRATA_API_KEY);
 
-async function getUser(id: string) {
+async function getUser(id) {
   try {
     const user = await client.users.retrieve(id);
     console.log('User found:', user.email);
@@ -190,13 +189,13 @@ getUser('usr_12345678');`}
 
 // --- Main App Component ---
 
-const App: React.FC = () => {
+const App = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('#introduction');
   
   // Theme State
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+  const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         return 'dark';
@@ -222,7 +221,7 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setIsSearchOpen(true);
@@ -232,7 +231,7 @@ const App: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const handleNavigate = (path: string) => {
+  const handleNavigate = (path) => {
     setCurrentPath(path);
     if (path.startsWith('#')) {
       document.getElementById(path.substring(1))?.scrollIntoView({ behavior: 'smooth' });
