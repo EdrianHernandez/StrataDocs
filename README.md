@@ -1,0 +1,2 @@
+# StrataDocs
+SaaS Documentation Page
